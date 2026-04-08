@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-BG_URL="https://mangal.legal/media/BackgroundImage.jpg"
+BG_URL="https://raw.githubusercontent.com/securow/s/refs/heads/main/BackgroundImage.jpg"
 BG_FILE="/tmp/mangal-bg.jpg"
 
 APPS=(
