@@ -2,7 +2,8 @@
 set -euo pipefail
 
 BG_URL="https://raw.githubusercontent.com/securow/s/refs/heads/main/BackgroundImage.jpg"
-BG_FILE="/tmp/mangal-bg.jpg"
+CACHE_DIR="$HOME/Library/Caches/mangal-setup"
+BG_FILE="$CACHE_DIR/mangal-bg.jpg"
 
 APPS=(
   "/Applications/Microsoft Teams.app"
@@ -66,7 +67,15 @@ ensure_tools() {
 
 download_wallpaper() {
   log "Lade Hintergrundbild herunter ..."
-  curl -fsSL "$BG_URL" -o "$BG_FILE"
+  mkdir -p "$CACHE_DIR"
+  rm -f "$BG_FILE"
+
+  curl --fail --location --silent --show-error "$BG_URL" --output "$BG_FILE"
+
+  if [ ! -s "$BG_FILE" ]; then
+    log "Fehler: Hintergrundbild konnte nicht korrekt gespeichert werden."
+    exit 1
+  fi
 }
 
 clear_dock() {
