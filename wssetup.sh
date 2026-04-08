@@ -66,7 +66,7 @@ ensure_tools() {
 }
 
 download_wallpaper() {
-  log "Lade Hintergrundbild herunter ..."
+  log "Lade Hintergrundbild herunter v2 ..."
   mkdir -p "$CACHE_DIR"
   rm -f "$BG_FILE"
 
